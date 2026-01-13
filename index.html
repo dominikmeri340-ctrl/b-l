@@ -19,10 +19,19 @@
       cursor: pointer;
     }
 
-    img {
-      max-width: 90%;
-      margin-top: 20px;
+    .fullscreen {
       display: none;
+      position: fixed;
+      inset: 0;
+      background: black;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .fullscreen img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
   </style>
 </head>
@@ -31,19 +40,19 @@
 
 <h1>Válassz italtípust</h1>
 
-<button onclick="show('alkoholos')">Alkoholos</button>
-<button onclick="show('alkoholmentes')">Alkoholmentes</button>
+<button onclick="openImage()">Alkoholos</button>
 
-<br>
-
-<img id="alkoholos" src="alkoholos.jpg" alt="Alkoholos italok">
-<img id="alkoholmentes" src="alkoholmentes.jpg" alt="Alkoholmentes italok">
+<div id="alkoholos" class="fullscreen" onclick="closeImage()">
+  <img src="alkoholos.jpg" alt="Alkoholos italok">
+</div>
 
 <script>
-  function show(id) {
+  function openImage() {
+    document.getElementById("alkoholos").style.display = "flex";
+  }
+
+  function closeImage() {
     document.getElementById("alkoholos").style.display = "none";
-    document.getElementById("alkoholmentes").style.display = "none";
-    document.getElementById(id).style.display = "block";
   }
 </script>
 
